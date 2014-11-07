@@ -3,6 +3,7 @@ title: enviroCaR
 author: Nikolai Gorte, Simon Schoemaker
 framework: revealjs
 revealjs: {theme: default, transition: default}
+url: {lib: ../libraries}
 ---
 
 ## enviroCaR 

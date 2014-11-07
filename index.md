@@ -3,6 +3,7 @@ title: enviroCaR
 author: Nikolai Gorte, Simon Schoemaker
 framework: revealjs
 revealjs: {theme: default, transition: default}
+url: {lib: ../libraries}
 ---
 
 ## enviroCaR 
@@ -213,9 +214,7 @@ trcol <- TracksCollection(list(A=track))
 stplot(trcol)
 ```
 
-```
-## Error in eval(expr, envir, enclos): object 'lat' not found
-```
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
 
 
 ---
