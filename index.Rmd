@@ -3,7 +3,9 @@ title: enviroCaR
 author: Nikolai Gorte, Simon Schoemaker
 framework: revealjs
 revealjs: {theme: default, transition: default}
-url: {lib: ../libraries}
+mode: selfcontained
+highlighter : prettify
+hitheme: desert
 ---
 
 ## enviroCaR 
@@ -13,8 +15,8 @@ Nikolai Gorte & Simon Schoemaker
 
 --- 
 
-## Import single Track
-```{r setup, echo=FALSE,error=FALSE,message=FALSE, results='asis'}
+## Import Single Track
+```{r setup, echo=FALSE,error=FALSE,message=FALSE}
 require(enviroCaR)
 require(fuzzyMM)
 require(map3d)
@@ -22,33 +24,62 @@ require(knitr)
 require(spacetime)
 knit_hooks$set(rgl = hook_rgl)
 ```
-```{r}
-track <- importSingleTrack("https://envirocar.org/api/stable", "53b5228ee4b01607fa566b78")
+```{r getTrack}
+track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593cce13bfc7")
 
 ```
 
 ---
-## Track structure
-```{r}
+## Track Structure
+```{r strtrack}
 str(track)
 ```
 
 ---
-## Some statistics
-```{r}
+## Some Statistics
+```{r sumtrack}
 summary(track)
 ```
 
 ---
 ## Plot
-```{r}
+```{r stplot, fig.height = 6, fig.align = 'center'}
 trcol <- TracksCollection(list(A=track))
 stplot(trcol)
 ```
 
+---
+## Map Matching
+
+Map matching is the process of associating a sorted list of user 
+or vehicle positions to the road network on a digital map.
+
 
 ---
-## 3d plot
-```{r, rgl=TRUE}
-spplot3d(track@tracks[[1]]@sp)
+## Map Matching
+
+```{r mm, message=FALSE,comment="", fig.height = 6, fig.align = 'center'}
+par(bg = "white")
+data <- track@tracks[[1]]@data
+track_sp <- track@tracks[[1]]@sp
+track_sp <- SpatialPointsDataFrame(track_sp, data, proj4string=proj4string(track_sp), bbox=bbox(track_sp))
+matched_track <- mm(track_sp, plot = TRUE)
+```
+
+---
+## Map Matching
+
+```{r mm2, message=FALSE,comment="", fig.align = 'center',fig.height=6}
+par(bg = "white")
+drn <- create_drn(bbox(track_sp))
+plot(coordinates(track_sp)[1:20,], col="blue", pch=16)
+lines(drn@sl)
+points(coordinates(matched_track)[1:20,], col="red", pch=16)
+```
+
+---
+## 3D Plot
+
+```{r 3dplot, rgl=TRUE,fig.align = 'center'}
+spplot3d(track@tracks[[1]]@sp, radius = 1)
 ```

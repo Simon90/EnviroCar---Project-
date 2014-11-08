@@ -4,6 +4,7 @@ enviroCaR
 frbs
 fuzzyMM
 geosphere
+igraph
 knitr
 map3d
 OpenStreetMap
@@ -14,6 +15,7 @@ rgdal
 rgl
 rJava
 slidify
+slidifyLibraries
 sp
 spacetime
 trajectories
