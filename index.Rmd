@@ -2,60 +2,69 @@
 title: enviroCaR
 author: Nikolai Gorte, Simon Schoemaker
 framework: revealjs
-revealjs: {theme: default, transition: default}
+revealjs: {theme: default, transition: default, trasition-speed: slow}
 mode: selfcontained
 highlighter : prettify
 hitheme: desert
----
+--- {background: titel.jpg}
 
 ## enviroCaR 
-### An R Package
+### Analysis of Car Trajectories Provided by the enviroCar Project
 
 Nikolai Gorte & Simon Schoemaker
 
---- 
+--- {background: titel.jpg}
 
 ## Import Single Track
-```{r setup, echo=FALSE,error=FALSE,message=FALSE}
+```{r setup, echo=FALSE,error=FALSE,message=FALSE, results='asis'}
 require(enviroCaR)
 require(fuzzyMM)
 require(map3d)
+require(rgl)
 require(knitr)
 require(spacetime)
 knit_hooks$set(rgl = hook_rgl)
 ```
+
 ```{r getTrack}
 track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593cce13bfc7")
 
 ```
 
----
+--- {background: titel.jpg}
 ## Track Structure
 ```{r strtrack}
 str(track)
 ```
 
----
+--- {background: titel.jpg}
 ## Some Statistics
 ```{r sumtrack}
 summary(track)
 ```
 
----
-## Plot
+--- {background: titel.jpg}
+## stplot
+* Works only for TracksCollection
 ```{r stplot, fig.height = 6, fig.align = 'center'}
 trcol <- TracksCollection(list(A=track))
-stplot(trcol)
+stplot(trcol, scales = list(draw=TRUE))
 ```
 
----
+--- {background: titel.jpg}
+## stplot with Attributes
+```{r stplot2, fig.height = 6, fig.align = 'center'}
+stplot(trcol, attr = "speed", arrows=TRUE, lwd = 3, by = "IDs")
+```
+
+--- {background: titel.jpg}
 ## Map Matching
 
 Map matching is the process of associating a sorted list of user 
 or vehicle positions to the road network on a digital map.
 
 
----
+--- {background: titel.jpg}
 ## Map Matching
 
 ```{r mm, message=FALSE,comment="", fig.height = 6, fig.align = 'center'}
@@ -66,7 +75,7 @@ track_sp <- SpatialPointsDataFrame(track_sp, data, proj4string=proj4string(track
 matched_track <- mm(track_sp, plot = TRUE)
 ```
 
----
+--- {background: titel.jpg}
 ## Map Matching
 
 ```{r mm2, message=FALSE,comment="", fig.align = 'center',fig.height=6}
@@ -77,9 +86,21 @@ lines(drn@sl)
 points(coordinates(matched_track)[1:20,], col="red", pch=16)
 ```
 
----
+--- {background: titel.jpg}
 ## 3D Plot
 
-```{r 3dplot, rgl=TRUE,fig.align = 'center'}
-spplot3d(track@tracks[[1]]@sp, radius = 1)
+```{r 3dplot, rgl=TRUE, fig.align = 'center', fig.height = 6}
+par3d("zoom" = 0.35)
+spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type="skobbler")
+```
+```{r, echo=FALSE}
+rgl.close()
+```
+
+--- {background: titel.jpg}
+## 3D Plot with Attributes
+
+```{r 3dplot2, rgl=TRUE, fig.align = 'center',fig.height = 6}
+par3d("zoom" = 0.35)
+spplot3d(track_sp, att="GPS.Speed", radius = 1, open3d = FALSE, type="skobbler")
 ```

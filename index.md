@@ -2,20 +2,21 @@
 title: enviroCaR
 author: Nikolai Gorte, Simon Schoemaker
 framework: revealjs
-revealjs: {theme: default, transition: default}
+revealjs: {theme: default, transition: default, trasition-speed: slow}
 mode: selfcontained
 highlighter : prettify
 hitheme: desert
----
+--- {background: titel.jpg}
 
 ## enviroCaR 
-### An R Package
+### Analysis of Car Trajectories Provided by the enviroCar Project
 
 Nikolai Gorte & Simon Schoemaker
 
---- 
+--- {background: titel.jpg}
 
 ## Import Single Track
+
 
 
 ```r
@@ -29,7 +30,7 @@ track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593c
 ## Feature type: wkbPoint with 2 dimensions
 ```
 
----
+--- {background: titel.jpg}
 ## Track Structure
 
 ```r
@@ -105,7 +106,7 @@ str(track)
 ##   .. ..$ medspeed: num 2.41
 ```
 
----
+--- {background: titel.jpg}
 ## Some Statistics
 
 ```r
@@ -208,24 +209,34 @@ summary(track)
 ##  Max.   :81.53   Max.   :864.00   Max.   :13.301   Max.   :353.77
 ```
 
----
-## Plot
+--- {background: titel.jpg}
+## stplot
+* Works only for TracksCollection
 
 ```r
 trcol <- TracksCollection(list(A=track))
-stplot(trcol)
+stplot(trcol, scales = list(draw=TRUE))
 ```
 
 <img src="assets/fig/stplot-1.png" title="plot of chunk stplot" alt="plot of chunk stplot" style="display: block; margin: auto;" />
 
----
+--- {background: titel.jpg}
+## stplot with Attributes
+
+```r
+stplot(trcol, attr = "speed", arrows=TRUE, lwd = 3, by = "IDs")
+```
+
+<img src="assets/fig/stplot2-1.png" title="plot of chunk stplot2" alt="plot of chunk stplot2" style="display: block; margin: auto;" />
+
+--- {background: titel.jpg}
 ## Map Matching
 
 Map matching is the process of associating a sorted list of user 
 or vehicle positions to the road network on a digital map.
 
 
----
+--- {background: titel.jpg}
 ## Map Matching
 
 
@@ -239,7 +250,7 @@ matched_track <- mm(track_sp, plot = TRUE)
 
 <img src="assets/fig/mm-1.png" title="plot of chunk mm" alt="plot of chunk mm" style="display: block; margin: auto;" />
 
----
+--- {background: titel.jpg}
 ## Map Matching
 
 
@@ -253,12 +264,13 @@ points(coordinates(matched_track)[1:20,], col="red", pch=16)
 
 <img src="assets/fig/mm2-1.png" title="plot of chunk mm2" alt="plot of chunk mm2" style="display: block; margin: auto;" />
 
----
+--- {background: titel.jpg}
 ## 3D Plot
 
 
 ```r
-spplot3d(track@tracks[[1]]@sp, radius = 1)
+par3d("zoom" = 0.35)
+spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type="skobbler")
 ```
 
 ```
@@ -266,3 +278,15 @@ spplot3d(track@tracks[[1]]@sp, radius = 1)
 ```
 
 <img src="assets/fig/3dplot-1.png" title="plot of chunk 3dplot" alt="plot of chunk 3dplot" style="display: block; margin: auto;" />
+
+
+--- {background: titel.jpg}
+## 3D Plot with Attributes
+
+
+```r
+par3d("zoom" = 0.35)
+spplot3d(track_sp, att="GPS.Speed", radius = 1, open3d = FALSE, type="skobbler")
+```
+
+<img src="assets/fig/3dplot2-1.png" title="plot of chunk 3dplot2" alt="plot of chunk 3dplot2" style="display: block; margin: auto;" /><img src="assets/fig/3dplot2-1.png" title="plot of chunk 3dplot2" alt="plot of chunk 3dplot2" style="display: block; margin: auto;" />

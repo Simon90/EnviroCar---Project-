@@ -18,14 +18,14 @@
 <body>
   <div class="reveal">
     <div class="slides">
-      <section class='' data-state='' id='slide-1'>
+      <section class='' data-state='' id='slide-1'data-background='titel.jpg'>
   <h2>enviroCaR</h2>
-  <h3>An R Package</h3>
+  <h3>Analysis of Car Trajectories Provided by the enviroCar Project</h3>
 
 <p>Nikolai Gorte &amp; Simon Schoemaker</p>
 
 </section>
-<section class='' data-state='' id='slide-2'>
+<section class='' data-state='' id='slide-2'data-background='titel.jpg'>
   <h2>Import Single Track</h2>
   <pre><code class="r">track &lt;- importSingleTrack(&quot;https://envirocar.org/api/stable&quot;, &quot;52af4fd3e4b0593cce13bfc7&quot;)
 </code></pre>
@@ -37,7 +37,7 @@
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-3'>
+<section class='' data-state='' id='slide-3'data-background='titel.jpg'>
   <h2>Track Structure</h2>
   <pre><code class="r">str(track)
 </code></pre>
@@ -111,7 +111,7 @@
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-4'>
+<section class='' data-state='' id='slide-4'data-background='titel.jpg'>
   <h2>Some Statistics</h2>
   <pre><code class="r">summary(track)
 </code></pre>
@@ -212,22 +212,34 @@
 </code></pre>
 
 </section>
-<section class='' data-state='' id='slide-5'>
-  <h2>Plot</h2>
-  <pre><code class="r">trcol &lt;- TracksCollection(list(A=track))
-stplot(trcol)
+<section class='' data-state='' id='slide-5'data-background='titel.jpg'>
+  <h2>stplot</h2>
+  <ul>
+<li>Works only for TracksCollection</li>
+</ul>
+
+<pre><code class="r">trcol &lt;- TracksCollection(list(A=track))
+stplot(trcol, scales = list(draw=TRUE))
 </code></pre>
 
 <p><img src="assets/fig/stplot-1.png" title="plot of chunk stplot" alt="plot of chunk stplot" style="display: block; margin: auto;" /></p>
 
 </section>
-<section class='' data-state='' id='slide-6'>
+<section class='' data-state='' id='slide-6'data-background='titel.jpg'>
+  <h2>stplot with Attributes</h2>
+  <pre><code class="r">stplot(trcol, attr = &quot;speed&quot;, arrows=TRUE, lwd = 3, by = &quot;IDs&quot;)
+</code></pre>
+
+<p><img src="assets/fig/stplot2-1.png" title="plot of chunk stplot2" alt="plot of chunk stplot2" style="display: block; margin: auto;" /></p>
+
+</section>
+<section class='' data-state='' id='slide-7'data-background='titel.jpg'>
   <h2>Map Matching</h2>
   <p>Map matching is the process of associating a sorted list of user 
 or vehicle positions to the road network on a digital map.</p>
 
 </section>
-<section class='' data-state='' id='slide-7'>
+<section class='' data-state='' id='slide-8'data-background='titel.jpg'>
   <h2>Map Matching</h2>
   <pre><code class="r">par(bg = &quot;white&quot;)
 data &lt;- track@tracks[[1]]@data
@@ -239,7 +251,7 @@ matched_track &lt;- mm(track_sp, plot = TRUE)
 <p><img src="assets/fig/mm-1.png" title="plot of chunk mm" alt="plot of chunk mm" style="display: block; margin: auto;" /></p>
 
 </section>
-<section class='' data-state='' id='slide-8'>
+<section class='' data-state='' id='slide-9'data-background='titel.jpg'>
   <h2>Map Matching</h2>
   <pre><code class="r">par(bg = &quot;white&quot;)
 drn &lt;- create_drn(bbox(track_sp))
@@ -251,15 +263,25 @@ points(coordinates(matched_track)[1:20,], col=&quot;red&quot;, pch=16)
 <p><img src="assets/fig/mm2-1.png" title="plot of chunk mm2" alt="plot of chunk mm2" style="display: block; margin: auto;" /></p>
 
 </section>
-<section class='' data-state='' id='slide-9'>
+<section class='' data-state='' id='slide-10'data-background='titel.jpg'>
   <h2>3D Plot</h2>
-  <pre><code class="r">spplot3d(track@tracks[[1]]@sp, radius = 1)
+  <pre><code class="r">par3d(&quot;zoom&quot; = 0.35)
+spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type=&quot;skobbler&quot;)
 </code></pre>
 
 <pre><code>## Warning in .local(obj, ...): No Attribute chosen or not found in &#39;obj&#39;!
 </code></pre>
 
 <p><img src="assets/fig/3dplot-1.png" title="plot of chunk 3dplot" alt="plot of chunk 3dplot" style="display: block; margin: auto;" /></p>
+
+</section>
+<section class='' data-state='' id='slide-11'data-background='titel.jpg'>
+  <h2>3D Plot with Attributes</h2>
+  <pre><code class="r">par3d(&quot;zoom&quot; = 0.35)
+spplot3d(track_sp, att=&quot;GPS.Speed&quot;, radius = 1, open3d = FALSE, type=&quot;skobbler&quot;)
+</code></pre>
+
+<p><img src="assets/fig/3dplot2-1.png" title="plot of chunk 3dplot2" alt="plot of chunk 3dplot2" style="display: block; margin: auto;" /><img src="assets/fig/3dplot2-1.png" title="plot of chunk 3dplot2" alt="plot of chunk 3dplot2" style="display: block; margin: auto;" /></p>
 
 </section>
     </div>
