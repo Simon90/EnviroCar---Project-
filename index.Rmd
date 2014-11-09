@@ -44,17 +44,24 @@ summary(track)
 ```
 
 --- {background: titel.jpg}
+## Import Several Tracks
+* By ID, bbox or time interval
+```{r getTracks}
+ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(track))
+trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
+```
+
+--- {background: titel.jpg}
 ## stplot
 * Works only for TracksCollection
 ```{r stplot, fig.height = 6, fig.align = 'center'}
-trcol <- TracksCollection(list(A=track))
 stplot(trcol, scales = list(draw=TRUE))
 ```
 
 --- {background: titel.jpg}
 ## stplot with Attributes
 ```{r stplot2, fig.height = 6, fig.align = 'center'}
-stplot(trcol, attr = "speed", arrows=TRUE, lwd = 3, by = "IDs")
+stplot(trcol, attr = "speed", lwd = 3, by = "IDs")
 ```
 
 --- {background: titel.jpg}
@@ -104,3 +111,5 @@ rgl.close()
 par3d("zoom" = 0.35)
 spplot3d(track_sp, att="GPS.Speed", radius = 1, open3d = FALSE, type="skobbler")
 ```
+
+
