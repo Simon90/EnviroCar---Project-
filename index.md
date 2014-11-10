@@ -18,6 +18,13 @@ Nikolai Gorte & Simon Schoemaker
 
 ## Agenda
 
+
+* Introduction enviroCaR
+* What can be done?
+  * Trajectories package
+  * spacetime package
+* Future work
+
 --- {background: titel.jpg}
 
 ## EnviroCaR

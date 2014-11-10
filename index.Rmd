@@ -18,6 +18,13 @@ Nikolai Gorte & Simon Schoemaker
 
 ## Agenda
 
+
+* Introduction enviroCaR
+* What can be done?
+  * Trajectories package
+  * spacetime package
+* Future work
+
 --- {background: titel.jpg}
 
 ## EnviroCaR
@@ -47,11 +54,16 @@ track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593c
 
 --- {background: titel.jpg}
 
-## Classes 
+## Trajectory Classes 
 ```{r getDef}
 getClassDef("Track", trajectories)
+```
+
+--- {background: titel.jpg}
+## Trajectory Classes 
+```{r getDef2}
 getClassDef("Tracks", trajectories)
-getClassDef("TrackCollection", trajectories)
+getClassDef("TracksCollection", trajectories)
 ```
 
 --- {background: titel.jpg}
