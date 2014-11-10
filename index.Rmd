@@ -46,6 +46,15 @@ track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593c
 ```
 
 --- {background: titel.jpg}
+
+## Classes 
+```{r getDef}
+getClassDef("Track", trajectories)
+getClassDef("Tracks", trajectories)
+getClassDef("TrackCollection", trajectories)
+```
+
+--- {background: titel.jpg}
 ## Track Structure
 ```{r strtrack}
 str(track)
