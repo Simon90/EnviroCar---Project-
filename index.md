@@ -9,9 +9,23 @@ hitheme: desert
 --- {background: titel.jpg}
 
 ## enviroCaR 
-### Analysis of Car Trajectories Provided by the enviroCar Project
+<br>
+### Analysis of Car Trajectories 
+#### provided by the enviroCar Project
+Nikolai Gorte & Simon Schoemaker 
 
-Nikolai Gorte & Simon Schoemaker
+--- {background: titel.jpg}
+
+## Agenda
+
+--- {background: titel.jpg}
+
+## EnviroCaR
+* R package
+* https://github.com/enviroCar/enviroCaR
+* Basic functions to load and analyse measurements from the envirocar server
+  * importEnviroCar()
+  * importSingleTrack()
 
 --- {background: titel.jpg}
 
