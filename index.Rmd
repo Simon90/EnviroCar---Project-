@@ -21,7 +21,7 @@ Nikolai Gorte & Simon Schoemaker
 
 * Introduction enviroCaR
 * What can be done?
-  * Trajectories package
+  * trajectories package
   * spacetime package
 * Future work
 
@@ -31,8 +31,6 @@ Nikolai Gorte & Simon Schoemaker
 * R package
 * https://github.com/enviroCar/enviroCaR
 * Basic functions to load and analyse measurements from the envirocar server
-  * importEnviroCar()
-  * importSingleTrack()
 
 --- {background: titel.jpg}
 
@@ -48,8 +46,14 @@ knit_hooks$set(rgl = hook_rgl)
 ```
 
 ```{r getTrack}
-track <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593cce13bfc7")
+tracks <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593cce13bfc7")
 
+```
+
+--- {background: titel.jpg}
+## Track Structure
+```{r strtrack}
+str(tracks)
 ```
 
 --- {background: titel.jpg}
@@ -60,31 +64,27 @@ getClassDef("Track", trajectories)
 ```
 
 --- {background: titel.jpg}
-## Trajectory Classes 
-```{r getDef2}
-getClassDef("Tracks", trajectories)
-getClassDef("TracksCollection", trajectories)
-```
-
---- {background: titel.jpg}
-## Track Structure
-```{r strtrack}
-str(track)
-```
-
---- {background: titel.jpg}
-## Some Statistics
-```{r sumtrack}
-summary(track)
-```
-
---- {background: titel.jpg}
 ## Import Several Tracks
 * By ID, bbox or time interval
 ```{r getTracks}
 ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(track))
 trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
 ```
+
+--- {background: titel.jpg}
+## Trajectory Classes 
+```{r getDef2}
+getClassDef("Tracks", trajectories)
+getClassDef("TracksCollection", trajectories)
+```
+
+
+--- {background: titel.jpg}
+## Some Statistics
+```{r sumtrack}
+summary(tracks)
+```
+
 
 --- {background: titel.jpg}
 ## stplot
@@ -98,6 +98,23 @@ stplot(trcol, scales = list(draw=TRUE))
 ```{r stplot2, fig.height = 6, fig.align = 'center'}
 stplot(trcol, attr = "speed", lwd = 3, by = "IDs")
 ```
+
+
+--- {background: titel.jpg}
+## Aggregate Track
+```{r aggregate}
+agg_track <- aggregateTrack(tracks, phen="CO2", interval=26)
+str(agg_track)
+```
+
+--- {background: titel.jpg}
+## Generalize Track
+```{r generalize}
+track <- tracks[1]
+gen_track <- generalize(track, distance = 500)
+str(gen_track)
+```
+
 
 --- {background: titel.jpg}
 ## Map Matching
@@ -146,5 +163,22 @@ rgl.close()
 par3d("zoom" = 0.35)
 spplot3d(track_sp, att="GPS.Speed", radius = 1, open3d = FALSE, type="skobbler")
 ```
+
+--- {background: titel.jpg}
+## Summary
+
+* enviroCaR package
+* Trajectory classes
+* Plots, aggregation, generalization
+* Map matching
+* 3D plot
+
+--- {background: titel.jpg}
+## Outlook
+
+* Solving issues with existing methods
+* Custom track statistic functions
+* Integrate map matching
+* Improve visualization
 
 
