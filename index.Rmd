@@ -67,7 +67,7 @@ getClassDef("Track", trajectories)
 ## Import Several Tracks
 * By ID, bbox or time interval
 ```{r getTracks}
-ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(track))
+ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(tracks))
 trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
 ```
 
@@ -109,7 +109,7 @@ str(agg_track)
 
 --- {background: titel.jpg}
 ## Generalize Track
-```{r generalize}
+```{r generalize,warning=FALSE}
 track <- tracks[1]
 gen_track <- generalize(track, distance = 500)
 str(gen_track)
@@ -128,8 +128,8 @@ or vehicle positions to the road network on a digital map.
 
 ```{r mm, message=FALSE,comment="", fig.height = 6, fig.align = 'center'}
 par(bg = "white")
-data <- track@tracks[[1]]@data
-track_sp <- track@tracks[[1]]@sp
+data <- track@data
+track_sp <- track@sp
 track_sp <- SpatialPointsDataFrame(track_sp, data, proj4string=proj4string(track_sp), bbox=bbox(track_sp))
 matched_track <- mm(track_sp, plot = TRUE)
 ```
@@ -150,7 +150,7 @@ points(coordinates(matched_track)[1:20,], col="red", pch=16)
 
 ```{r 3dplot, rgl=TRUE, fig.align = 'center', fig.height = 6}
 par3d("zoom" = 0.35)
-spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type="skobbler")
+spplot3d(track@sp, radius = 1, open3d = FALSE, type="skobbler")
 ```
 ```{r, echo=FALSE}
 rgl.close()

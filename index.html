@@ -163,7 +163,7 @@
 <li>By ID, bbox or time interval</li>
 </ul>
 
-<pre><code class="r">ids &lt;- getTrackIDs(&quot;https://envirocar.org/api/stable&quot;, bbox(track))
+<pre><code class="r">ids &lt;- getTrackIDs(&quot;https://envirocar.org/api/stable&quot;, bbox(tracks))
 trcol &lt;- importEnviroCar(&quot;https://envirocar.org/api/stable&quot;, ids[4:6])
 </code></pre>
 
@@ -489,8 +489,8 @@ or vehicle positions to the road network on a digital map.</p>
 <section class='' data-state='' id='slide-15'data-background='titel.jpg'>
   <h2>Map Matching</h2>
   <pre><code class="r">par(bg = &quot;white&quot;)
-data &lt;- track@tracks[[1]]@data
-track_sp &lt;- track@tracks[[1]]@sp
+data &lt;- track@data
+track_sp &lt;- track@sp
 track_sp &lt;- SpatialPointsDataFrame(track_sp, data, proj4string=proj4string(track_sp), bbox=bbox(track_sp))
 matched_track &lt;- mm(track_sp, plot = TRUE)
 </code></pre>
@@ -513,7 +513,7 @@ points(coordinates(matched_track)[1:20,], col=&quot;red&quot;, pch=16)
 <section class='' data-state='' id='slide-17'data-background='titel.jpg'>
   <h2>3D Plot</h2>
   <pre><code class="r">par3d(&quot;zoom&quot; = 0.35)
-spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type=&quot;skobbler&quot;)
+spplot3d(track@sp, radius = 1, open3d = FALSE, type=&quot;skobbler&quot;)
 </code></pre>
 
 <pre><code>## Warning in .local(obj, ...): No Attribute chosen or not found in &#39;obj&#39;!

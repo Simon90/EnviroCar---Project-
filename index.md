@@ -152,7 +152,7 @@ getClassDef("Track", trajectories)
 * By ID, bbox or time interval
 
 ```r
-ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(track))
+ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(tracks))
 trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
 ```
 
@@ -495,8 +495,8 @@ or vehicle positions to the road network on a digital map.
 
 ```r
 par(bg = "white")
-data <- track@tracks[[1]]@data
-track_sp <- track@tracks[[1]]@sp
+data <- track@data
+track_sp <- track@sp
 track_sp <- SpatialPointsDataFrame(track_sp, data, proj4string=proj4string(track_sp), bbox=bbox(track_sp))
 matched_track <- mm(track_sp, plot = TRUE)
 ```
@@ -523,7 +523,7 @@ points(coordinates(matched_track)[1:20,], col="red", pch=16)
 
 ```r
 par3d("zoom" = 0.35)
-spplot3d(track@tracks[[1]]@sp, radius = 1, open3d = FALSE, type="skobbler")
+spplot3d(track@sp, radius = 1, open3d = FALSE, type="skobbler")
 ```
 
 ```
