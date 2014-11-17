@@ -3,9 +3,10 @@ title: "Using EnviroCar data in R"
 author: "Nikolai Gorte & Simon Schoemaker"
 date: "November 20, 2014"
 output: html_document
+bibliography: bib.bib
 ---
 <br>
-R is a open-source software for general data analysis. It compiles and runs on a wide variety of platforms and provides a big sample of statistical and graphical methods. Furthermore, R is easily extendable through a massive amount of so-called packages. Currently, there are round about 6000 packages available on the "Comprehensive R Archive Network", short called CRAN. The number of developers and published packages are growing continuously. However, each package has got help pages, several documentations and useful example code chunks. (R-Project, 2014) 
+R [@R] is a open-source software for general data analysis. It compiles and runs on a wide variety of platforms and provides a big sample of statistical and graphical methods. Furthermore, R is easily extendable through a massive amount of so-called packages. Currently, there are round about 6000 packages available on the "Comprehensive R Archive Network", short called CRAN. The number of developers and published packages are growing continuously. However, each package has got help pages, several documentations and useful example code chunks. (R-Project, 2014) 
 
 - R
 - Trajectories
@@ -16,5 +17,6 @@ R is a open-source software for general data analysis. It compiles and runs on a
  - ImportSingleTrack
  - ImportEnviroCar
 
-References:
-R-Project 2014
+
+# References
+
