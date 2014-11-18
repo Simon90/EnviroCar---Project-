@@ -10,7 +10,7 @@ bibliography: bib.bib
 ---
 # enviroCaR - Analysis of Car Trajectories
 
-The capital R oviously reveals, that EnviroCaR is the corresponding R package to the project we will work on ((https://envirocar.org/).
+The capital R in the name "enviroCaR" oviously reveals that it is the R package corresponding to the project we will work on (https://envirocar.org/). In general, enviroCaR provides basic functions to load and analyse measurements from the enviroCar server [@envirocar]. 
  
 R is a open-source software for general data analysis. It compiles and runs on a wide variety of platforms and provides a big sample of statistical and graphical methods. Furthermore, R is easily extendable through a massive amount of so-called packages. Currently, there are round about 6000 packages available on the "Comprehensive R Archive Network", short called CRAN. The number of developers and published packages are growing continuously. Additionally, each package has got help pages, several documentations and useful example code chunks [@R].
 
@@ -21,7 +21,7 @@ library(devtools)
 install_github('enviroCaR', 'enviroCar')
 ``` 
 
-- R
+
 - Trajectories
  - Track
  - Tracks
