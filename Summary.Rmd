@@ -30,9 +30,18 @@ install_github('enviroCaR', 'enviroCar')
  - ImportSingleTrack
  - ImportEnviroCar
 
-# Aggregation
+\newpage
 
-\newpage 
+# Aggregation
+One function provided by the enviroCaR package is `aggregateTrack`.
+This function is used to aggregate measurements of a Track object.  
+It is possible to specify the phenomenon for aggregation, the interval size
+of measurements that have to be aggregated and a function for aggregation (e.g. mean).  
+Aggregation over time is not possible at the moment!
+In Figure 1 we can see an example of an aggregated track.
+
+![Aggregated Track](figures/agg.png)
+
 
 # Map Matching
 Map matching is the process of matching GPS trajectories to a digital road
@@ -45,21 +54,38 @@ the visual representation, but could also be useful when it comes to analysis or
 comparison of trajectories.
 
 
-One possible way of achieving this is the fuzzyMM package [@mm] which implements
+One possible way of achieving this is the `fuzzyMM` package [@mm] which implements
 a fuzzy logic based map matching algorithm.  
-As can be seen in Figure 1 the raw GPS positions are matched to road segments after the
+As can be seen in Figure 2 the raw GPS positions are matched to road segments after the
 application of the map matching algorithm.
 
-![Map Matching](figures/urban.png)
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{figures/urban.png}
+    \caption{Map Matching}
+    \label{fig:mm}
+\end{figure}
 
-At the moment fuzzyMM only works for SpatialPointsDataFrame objects which contain the 
+At the moment fuzzyMM only works for `SpatialPointsDataFrame` objects which contain the 
 GPS positions of the track and GPS data such as HDOP, speed and bearing.
-Since all of this is also included in the Track class, it should be no problem to modify
-the function to work with the trajectorie classes.
+Since all of this is also included in the `Track` class, it should be no problem to modify
+the function to work with the trajectory classes.
 
 
 
 # Conclusion
+As can be seen in the previous sections, what we can do with the enviroCar data in R
+until now is mostly basics.
+We can load enviroCar tracks into R, where they are represented by the classes from the 
+trajectories package and we can also do some basic plotting and aggregate measurements of a Track object.
+
+
+So there are several things that could be done in the future and maybe in the scope of this cpurse. 
+This, for example, includes implementing map matching to assign trajectories to road segments.
+Other things to think about are aggregation methods, e.g. the aggregation over multiple trajectories
+or aggregation over space and/or time.
+What may be also important and interesting is comparing trajectories of one driver and also 
+comparing trajectories between different drivers.
 
 
 # References
