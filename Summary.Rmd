@@ -10,7 +10,7 @@ bibliography: bib.bib
 ---
 # enviroCaR - Analysis of Car Trajectories
 
-The capital R in the name "enviroCaR" oviously reveals that it is the R package corresponding to the project we will work on (https://envirocar.org/). In general, enviroCaR provides basic functions to load and analyse measurements from the enviroCar server [@envirocar]. 
+The capital R in the name "enviroCaR" obviously reveals that it is the R package corresponding to the project we will work on (https://envirocar.org/). In general, enviroCaR provides basic functions to load and analyse measurements from the enviroCar server [@envirocar]. 
  
 R is a open-source software for general data analysis. It compiles and runs on a wide variety of platforms and provides a big sample of statistical and graphical methods. Furthermore, R is easily extendable through a massive amount of so-called packages. Currently, there are round about 6000 packages available on the "Comprehensive R Archive Network", short called CRAN. The number of developers and published packages are growing continuously. Additionally, each package has got help pages, several documentations and useful example code chunks [@R].
 
@@ -38,7 +38,8 @@ This function is used to aggregate measurements of a Track object.
 It is possible to specify the phenomenon for aggregation, the interval size
 of measurements that have to be aggregated and a function for aggregation (e.g. mean).  
 Aggregation over time is not possible at the moment!
-In Figure 1 we can see an example of an aggregated track.
+In Figure 1 we can see an example of an aggregated track. The raw track (black) is
+aggregated to six points (red).
 
 ![Aggregated Track](figures/agg.png)
 
@@ -80,7 +81,7 @@ We can load enviroCar tracks into R, where they are represented by the classes f
 trajectories package and we can also do some basic plotting and aggregate measurements of a Track object.
 
 
-So there are several things that could be done in the future and maybe in the scope of this cpurse. 
+So there are several things that could be done in the future and maybe in the scope of this course. 
 This, for example, includes implementing map matching to assign trajectories to road segments.
 Other things to think about are aggregation methods, e.g. the aggregation over multiple trajectories
 or aggregation over space and/or time.
