@@ -26,15 +26,14 @@ For improving the overall handling of trajectories in R a package called `trajec
 
 In general, there are three data classes for the representation of trajectories.
 
-The simplest one is the `Track`, which represents one single track.  The class contains five slots `@sp` to store the geometry like coordinates, `@time` to store the timestamps,
-to store the time, `@endtime` to store the end time when having generalised line
-geometries with one value per attribute for a set of points, `@data` to store the attributes and `@connections` to keep a record of attribute data between point like speed and distance.
+The first one is the `Track`, which represents one single track.  The class contains five slots `@sp` to store the geometry like coordinates, `@time` to store the time,
+`@endtime` to store the end time when having generalised line geometries with one value per attribute for a set of points, `@data` to store the attributes and `@connections` to keep a record of attribute data between points like speed and distance.
 
-The class `Tracks` embodies a collection of tracks followed by a single person,
-animal or object. In general, the class contains two slots: one for storing the tracks
+Furthermore, the class `Tracks` embodies a collection of tracks followed by a single person,
+animal or object. The class contains two slots: one for storing the tracks
 as objects of class `Track` and one for holding a summary record for each track.
 
-The last one is the class `TracksCollection`, which is also a collection of tracks but now in contrast to `Tracks` followed by many persons, animals or objects. Equal to `Tracks` the class has same two slots.
+The last one is the class `TracksCollection`, which is also a collection of tracks but now in contrast to `Tracks` followed by many persons, animals or objects. Equal to `Tracks` the class has the same two slots.
  
 # Import enviroCar data
 To load data from the enviroCar server you can easily use two provided import functions from the `enviroCaR` package. 

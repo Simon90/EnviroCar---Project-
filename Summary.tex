@@ -149,23 +149,23 @@ data (Pebesma and Klus 2014).
 In general, there are three data classes for the representation of
 trajectories.
 
-The simplest one is the \texttt{Track}, which represents one single
-track. The class contains five slots \texttt{@sp} to store the geometry
-like coordinates, \texttt{@time} to store the timestamps, to store the
-time, \texttt{@endtime} to store the end time when having generalised
-line geometries with one value per attribute for a set of points,
-\texttt{@data} to store the attributes and \texttt{@connections} to keep
-a record of attribute data between point like speed and distance.
+The first one is the \texttt{Track}, which represents one single track.
+The class contains five slots \texttt{@sp} to store the geometry like
+coordinates, \texttt{@time} to store the time, \texttt{@endtime} to
+store the end time when having generalised line geometries with one
+value per attribute for a set of points, \texttt{@data} to store the
+attributes and \texttt{@connections} to keep a record of attribute data
+between points like speed and distance.
 
-The class \texttt{Tracks} embodies a collection of tracks followed by a
-single person, animal or object. In general, the class contains two
+Furthermore, the class \texttt{Tracks} embodies a collection of tracks
+followed by a single person, animal or object. The class contains two
 slots: one for storing the tracks as objects of class \texttt{Track} and
 one for holding a summary record for each track.
 
 The last one is the class \texttt{TracksCollection}, which is also a
 collection of tracks but now in contrast to \texttt{Tracks} followed by
 many persons, animals or objects. Equal to \texttt{Tracks} the class has
-same two slots.
+the same two slots.
 
 \section{Import enviroCar data}\label{import-envirocar-data}
 
