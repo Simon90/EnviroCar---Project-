@@ -40,7 +40,7 @@ The last one is the class `TracksCollection`, which is also a collection of trac
 To load data from the enviroCar server you can easily use two provided import functions from the `enviroCaR` package. 
 Therefore, `importSingleTrack` allows you to import one single track and stores the loaded track as an object of class `Tracks` with a list of one `Track`. Required arguments for the function are the `serverUrl` and the `trackID`.
 
-```{r, warning = FALSE, message= FALSE}
+```{r, eval = FALSE, warning = FALSE, message= FALSE}
 require(enviroCaR)
 tracks <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593cce13bfc7")
 ```
@@ -48,7 +48,7 @@ tracks <- importSingleTrack("https://envirocar.org/api/stable", "52af4fd3e4b0593
 For importing several tracks you can use the function `importEnviroCar`. For this, you can select the tracks either with their Ids or a defined bounding box or a certain time interval.
 In the following example we use the track Ids to specify the data that should be retrieved.  
  
-```{r, warning = FALSE, message= FALSE}
+```{r, eval = FALSE, warning = FALSE, message= FALSE}
 require(sp)
 ids <- getTrackIDs("https://envirocar.org/api/stable", bbox(tracks))
 trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
@@ -58,10 +58,18 @@ trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
 # Plot 
 To plot the `TracksCollection` you can use the `stplot` from the `spacetime` package [@st].
 For the plot you can also specify an certain attribute (see the example below). currently, the plot method only works for objects of the class `TracksCollection`. 
-```{r, warning = FALSE, message= FALSE}
+```{r, eval = FALSE, warning = FALSE, message= FALSE}
 require(spacetime)
 stplot(trcol, attr = "speed", lwd = 3, by = "IDs")
 ```
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{figures/stplot.png}
+    \caption{Plot TracksCollection with attribute speed}
+    \label{fig:st}
+\end{figure}
+
 \newpage
 
 # Aggregation
