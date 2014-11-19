@@ -58,6 +58,7 @@ trcol <- importEnviroCar("https://envirocar.org/api/stable", ids[4:6])
 # Plot 
 To plot the `TracksCollection` you can use the `stplot` from the `spacetime` package [@st].
 For the plot you can also specify an certain attribute (see the example below). currently, the plot method only works for objects of the class `TracksCollection`. 
+
 ```{r, eval = FALSE, warning = FALSE, message= FALSE}
 require(spacetime)
 stplot(trcol, attr = "speed", lwd = 3, by = "IDs")
@@ -65,12 +66,12 @@ stplot(trcol, attr = "speed", lwd = 3, by = "IDs")
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1\textwidth]{figures/stplot.png}
+    \includegraphics[width=0.8\textwidth]{figures/stplot.png}
     \caption{Plot TracksCollection with attribute speed}
     \label{fig:st}
 \end{figure}
 
-\newpage
+
 
 # Aggregation
 One function provided by the enviroCaR package is `aggregateTrack`.
