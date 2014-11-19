@@ -73,7 +73,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={Nikolai Gorte \& Simon Schoemaker},
-            pdftitle={Using EnviroCar data in R},
+            pdftitle={Using enviroCar data in R},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -88,7 +88,7 @@
 %%% Change title format to be more compact
 \usepackage{titling}
 \setlength{\droptitle}{-2em}
-  \title{Using EnviroCar data in R}
+  \title{Using enviroCar data in R}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{Nikolai Gorte \& Simon Schoemaker}
@@ -126,8 +126,8 @@ help pages, several documentations and useful example code chunks (R
 Core Team 2014).
 
 As mentioned before R packages are usually available on CRAN and can be
-installed from there relatively straightforward. However, the EnviroCaR
-package is not on CRAN as yet and needs to be installed from github
+installed from there relatively straightforward. However, the enviroCaR
+package is not on CRAN as yet and needs to be installed from GitHub
 (\url{https://github.com/enviroCar/enviroCaR}). For the installation you
 can use the \texttt{devtools} package to accomplish this easily (Wickham
 and Chang 2014).
@@ -152,7 +152,7 @@ trajectories.
 The first one is the \texttt{Track}, which represents one single track.
 The class contains five slots \texttt{@sp} to store the geometry like
 coordinates, \texttt{@time} to store the time, \texttt{@endtime} to
-store the end time when having generalised line geometries with one
+store the end time when having generalized line geometries with one
 value per attribute for a set of points, \texttt{@data} to store the
 attributes and \texttt{@connections} to keep a record of attribute data
 between points like speed and distance.
@@ -228,7 +228,7 @@ One function provided by the enviroCaR package is
 of a Track object.\\It is possible to specify the phenomenon for
 aggregation, the interval size of measurements that have to be
 aggregated and a function for aggregation (e.g.~mean).\\Aggregation over
-time is not possible at the moment! In Figure 1 we can see an example of
+time is not possible at the moment! In Figure 2 we can see an example of
 an aggregated track. The raw track (black) is aggregated to six points
 (red).
 
@@ -251,7 +251,7 @@ trajectories.
 
 One possible way of achieving this is the \texttt{fuzzyMM} package
 (Gorte 2014) which implements a fuzzy logic based map matching
-algorithm.\\As can be seen in Figure 2 the raw GPS positions are matched
+algorithm.\\As can be seen in Figure 3 the raw GPS positions are matched
 to road segments after the application of the map matching algorithm.
 
 \begin{figure}[h!]
